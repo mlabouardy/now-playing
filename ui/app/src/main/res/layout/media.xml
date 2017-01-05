@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/cover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/cover"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cover"
-        android:text="The Autopsy of Jane Doe"/>
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/cover"/>
+
+        <com.labouardy.nowplaying.component.CustomTextView
+            android:id="@+id/name"
+            android:background="#FFF"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:layout_gravity="center|bottom"
+            android:paddingTop="10sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="The Autopsy of Jane Doe"/>
+
+    </FrameLayout>
+
+
 
 </RelativeLayout>

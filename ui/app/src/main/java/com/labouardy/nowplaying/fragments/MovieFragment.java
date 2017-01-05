@@ -12,8 +12,9 @@ import android.widget.TextView;
 
 import com.labouardy.nowplaying.MainActivity;
 import com.labouardy.nowplaying.R;
-import com.labouardy.nowplaying.adapter.DataReceiver;
+import com.labouardy.nowplaying.adapter.DataMovieReceiver;
 import com.labouardy.nowplaying.adapter.MediaAdapter;
+import com.labouardy.nowplaying.model.BucketStorage;
 import com.labouardy.nowplaying.model.Movie;
 
 import java.util.ArrayList;
@@ -28,29 +29,33 @@ public class MovieFragment  extends Fragment {
     private ListView listOfMediaLV;
     private MediaAdapter adapter;
     private List<Movie> movies;
-    private DataReceiver receiver;
+    private DataMovieReceiver receiver;
 
     public MovieFragment() {
-        receiver = new DataReceiver();
+        receiver = new DataMovieReceiver(this);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie, container, false);
         listOfMediaLV = (ListView)rootView.findViewById(R.id.listOfMedia);
         movies = new ArrayList<>();
-        for(int i=0;i<100;i++)
-            movies.add(new Movie("Movie #" + i , "https://image.tmdb.org/t/p/w185_and_h278_bestv2/gJNjVE8WGUjiSKUtMDEvNzxR5zq.jpg"));
         adapter = new MediaAdapter(this.getContext(), movies);
         listOfMediaLV.setAdapter(adapter);
         return rootView;
     }
 
+    public void update(BucketStorage data){
+        movies.clear();
+        for(Movie m: data.getMovies())
+            movies.add(m);
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
-        IntentFilter filter = new IntentFilter(DataReceiver.ACTION_RESP);
+        IntentFilter filter = new IntentFilter(DataMovieReceiver.ACTION_RESP);
         filter.addCategory(Intent.CATEGORY_DEFAULT);
         getActivity().registerReceiver(receiver, filter);
     }

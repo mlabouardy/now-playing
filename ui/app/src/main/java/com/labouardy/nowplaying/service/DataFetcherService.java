@@ -10,7 +10,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.labouardy.nowplaying.adapter.DataReceiver;
+import com.labouardy.nowplaying.AppController;
+import com.labouardy.nowplaying.adapter.DataMovieReceiver;
+import com.labouardy.nowplaying.adapter.DataSerieReceiver;
 import com.labouardy.nowplaying.model.BucketStorage;
 import com.labouardy.nowplaying.model.Config;
 import com.labouardy.nowplaying.model.Movie;
@@ -35,7 +37,12 @@ public class DataFetcherService extends IntentService{
             @Override
             public void onResponse(JSONObject response) {
                 Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction(DataReceiver.ACTION_RESP);
+                broadcastIntent.setAction(DataMovieReceiver.ACTION_RESP);
+                broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                broadcastIntent.putExtra("results", response.toString());
+                sendBroadcast(broadcastIntent);
+                broadcastIntent = new Intent();
+                broadcastIntent.setAction(DataSerieReceiver.ACTION_RESP);
                 broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
                 broadcastIntent.putExtra("results", response.toString());
                 sendBroadcast(broadcastIntent);
@@ -47,6 +54,6 @@ public class DataFetcherService extends IntentService{
             }
         });
 
-        queue.add(request);
+        AppController.getInstance().addToRequestQueue(request);
     }
 }

@@ -2,11 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:background="@color/white">
 
     <ListView
         android:id="@+id/listOfMedia"
-        android:layout_width="fill_parent"
+        android:dividerHeight="3dp"
+        android:divider="@null"
+        android:background="@color/white"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
 </RelativeLayout>
