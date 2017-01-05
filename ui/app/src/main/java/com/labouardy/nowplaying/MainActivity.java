@@ -57,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
         Intent fetcherService = new Intent(this, DataFetcherService.class);
         startService(fetcherService);
+
+        FloatingActionButton reloadBtn =(FloatingActionButton)findViewById(R.id.refreshBtn);
+        reloadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent fetcherService = new Intent(MainActivity.this, DataFetcherService.class);
+                startService(fetcherService);
+            }
+        });
     }
 
 
