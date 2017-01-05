@@ -1,0 +1,9 @@
+{
+  "name": "now-playing-crawler",
+  "author": "Mohamed Labouardy",
+  "dependencies": {
+    "async": "^2.1.4",
+    "aws-sdk": "^2.7.21",
+    "request": "^2.79.0"
+  }
+}
