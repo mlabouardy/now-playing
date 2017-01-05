@@ -9,6 +9,10 @@ List of movies and series available in theaters today
 
 # How it works
 
+<p align="center">
+  <img src="how_it_works.png" width="350"/>
+</p>
+
 1 - Web Crawler
 
 Cron job deployed in AWS Beanstalk which will parse www.themoviedb.com, and save the results as JSON, then upload it to AWS S3.
