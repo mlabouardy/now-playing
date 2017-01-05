@@ -4,13 +4,13 @@ List of movies and series available in theaters today
 # Android application
 
 <p align="center">
-  <img src="screenshot.png" width="350"/>
+  <img src="screenshot.png" width="250"/>
 </p>
 
 # How it works
 
 <p align="center">
-  <img src="how_it_works.png" width="350"/>
+  <img src="how_it_works.png" width="550"/>
 </p>
 
 1 - Web Crawler
