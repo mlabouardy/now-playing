@@ -5,4 +5,12 @@ package com.labouardy.nowplaying.model;
  */
 
 public class Serie extends Media {
+    public Serie() {
+    }
+
+    public Serie(String name, String cover) {
+        super(name, cover);
+    }
 }
+
+

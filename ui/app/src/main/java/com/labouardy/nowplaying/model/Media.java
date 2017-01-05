@@ -12,6 +12,11 @@ public class Media {
 
     public Media(){}
 
+    public Media(String name, String cover) {
+        this.name = name;
+        this.cover = cover;
+    }
+
     public String getName() {
         return name;
     }

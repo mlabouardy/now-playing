@@ -5,4 +5,11 @@ package com.labouardy.nowplaying.model;
  */
 
 public class Movie extends Media {
+
+    public Movie() {
+    }
+
+    public Movie(String name, String cover) {
+        super(name, cover);
+    }
 }

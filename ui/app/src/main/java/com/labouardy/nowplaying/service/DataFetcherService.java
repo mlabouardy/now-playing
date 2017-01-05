@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.labouardy.nowplaying.adapter.DataReceiver;
 import com.labouardy.nowplaying.model.BucketStorage;
 import com.labouardy.nowplaying.model.Config;
 import com.labouardy.nowplaying.model.Movie;
@@ -33,10 +34,11 @@ public class DataFetcherService extends IntentService{
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Config.BUCKET_STORAGE_URL, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Gson gson = new Gson();
-                BucketStorage data = gson.fromJson(response.toString(), BucketStorage.class);
-                for(Movie movie: data.getMovies())
-                    System.out.println(movie);
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(DataReceiver.ACTION_RESP);
+                broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                broadcastIntent.putExtra("results", response.toString());
+                sendBroadcast(broadcastIntent);
             }
         }, new Response.ErrorListener() {
             @Override
