@@ -33,6 +33,8 @@ import com.labouardy.nowplaying.service.DataFetcherService;
 
 import org.json.JSONObject;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent fetcherService = new Intent(MainActivity.this, DataFetcherService.class);
                 startService(fetcherService);
+                new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText(getString(R.string.app_name))
+                        .setContentText(getString(R.string.successfully_updated))
+                        .show();
             }
         });
     }
