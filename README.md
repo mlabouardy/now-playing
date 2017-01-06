@@ -20,3 +20,7 @@ Cron job deployed in AWS Beanstalk which will parse www.themoviedb.com, and save
 2 - UI
 
 Android application which will consume the json file by doing a GET call.
+
+# Contributors
+
+Mohamed Labouardy <mohamed@labouardy.com>
