@@ -1,6 +1,12 @@
 # About
 List of movies and series available in theaters today
 
+- S3
+- Cognito
+- Beanstalk
+- Node.JS
+- Android
+
 # Android application
 
 <p align="center">
